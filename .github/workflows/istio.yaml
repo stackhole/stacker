@@ -1,0 +1,11 @@
+name: cluster
+on:
+  push:
+    tags:        
+      - cluster-**
+jobs:
+  deploy-istio:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - run: bash cluster/reset.sh
