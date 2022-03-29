@@ -36,7 +36,7 @@ RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/s
 
 # Install Docker
 RUN curl https://get.docker.com | sh -
-RUN usermod -aG docker gactions-runner
+RUN usermod -aG docker actions-runner
 
 # Switch to new user
 USER actions-runner
