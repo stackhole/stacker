@@ -3,10 +3,10 @@ sudo apt install -y emacs-nox
 sudo snap install microk8s --classic 
 sudo snap install kubectl  --classic 
 microk8s status --wait-ready
-mkdir -p /home/vagrant/.kube
-microk8s config > /home/vagrant/.kube/config
+mkdir -p ~/.kube
+microk8s config > ~/.kube/config
 usermod -a -G microk8s vagrant
-chown -f -R vagrant /home/vagrant/.kube
+chown -f -R vagrant ~/.kube
 
 microk8s enable dns registry
 
