@@ -2,7 +2,12 @@ FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive 
 
-RUN apt update && apt install -y curl git
+RUN sudo apt-get update
+RUN sudo apt-get install -y apt-transport-https ca-certificates curl git
+RUN sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+RUN echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+RUN sudo apt-get update
+RUN sudo apt-get install -y kubectl
 
 # Create a folder
 RUN mkdir /actions-runner
@@ -27,7 +32,7 @@ RUN useradd actions-runner
 RUN chown actions-runner /actions-runner
 
 # Install kubectl
-RUN snap install kubectl --classic
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 
 # Install Docker
 RUN curl https://get.docker.com | sh -
