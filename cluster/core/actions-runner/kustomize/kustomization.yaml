@@ -4,6 +4,8 @@ metadata:
   name: actions-runner
 commonLabels:
   app: actions-runner
-
 resources:
-- deployment.yam
+- service-account.yaml
+- role.yaml
+- role-binding.yaml
+- deployment.yaml

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: github-actions-runner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: github-actions-runner
+  template:
+    metadata:
+      labels:
+        app: github-actions-runner
+    spec:
+      serviceAccountName: internal-kubectl
+      containers:
+        - image: localhost:32000/actions-runner:latest
+          imagePullPolicy: IfNotPresent
+          name: actions-runner
