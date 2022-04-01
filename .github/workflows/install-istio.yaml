@@ -3,9 +3,9 @@ on:
   workflow_dispatch:
     inputs:
       istioVersion:
-        type: environment
-        istioVersion: 1.13.2
-        required: false
+        type: string
+        default: 1.13.2
+        required: true
 jobs:
   deploy-istio:
     runs-on: self-hosted
