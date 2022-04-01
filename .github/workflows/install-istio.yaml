@@ -8,7 +8,7 @@ on:
         required: true
 jobs:
   deploy-istio:
-    runs-on: self-hosted
+    runs-on: 179e2ccbaf53
     steps:
       - uses: actions/checkout@v2
       - run: |
