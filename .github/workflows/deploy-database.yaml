@@ -1,11 +1,11 @@
-name: Deploy Istio Gateway
+name: Deploy Database
 on: workflow_dispatch
 jobs:
-  deploy-gateway:
+  deploy-database:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - run: |
-          cd cluster/gateway
+          cd cluster/database
           kubectl apply -k kustomize
 
