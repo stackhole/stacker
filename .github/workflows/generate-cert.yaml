@@ -25,7 +25,6 @@ jobs:
           openssl x509 -req -sha256 -days 365 -CA $DOMAIN_ROOT.crt -CAkey $DOMAIN_ROOT.key -set_serial 1 -in $APP_DOMAIN.$DOMAIN_ROOT.csr -out $APP_DOMAIN.$DOMAIN_ROOT.crt
           kubectl create -n istio-system secret tls $APP_DOMAIN-credential --key=$APP_DOMAIN.$DOMAIN_ROOT.key --cert=$APP_DOMAIN.$DOMAIN_ROOT.crt
         env:
-          - DOMAIN_ROOT: ${{ github.event.inputs.domainRoot }}
-          - APP_DOMAIN: ${{ github.event.inputs.appDomain }}
-          - ORGANIZATION: ${{ github.event.inputs.organization }}
-
+          DOMAIN_ROOT: ${{ github.event.inputs.domainRoot }}
+          APP_DOMAIN: ${{ github.event.inputs.appDomain }}
+          ORGANIZATION: ${{ github.event.inputs.organization }}
