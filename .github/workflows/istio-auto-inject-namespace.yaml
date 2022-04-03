@@ -1,4 +1,4 @@
-name: Install Istio
+name: Inject Istio Namespace
 on:
   workflow_dispatch:
     inputs:

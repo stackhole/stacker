@@ -1,0 +1,11 @@
+name: Deploy Istio Gateway
+on: workflow_dispatch
+jobs:
+  build-service:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          cd cluster/gateway
+          kubectl apply -k kustomize
+
