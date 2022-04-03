@@ -27,3 +27,5 @@ spec:
       number: 5432 # to expose internal service via external port 2379
       name: postgres
       protocol: TCP
+    hosts:
+    - "*"
