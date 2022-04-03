@@ -25,7 +25,6 @@ RUN chmod a+x runLoop.sh
 USER actions-runner
 
 # Run the config script
-RUN ./config.sh --url https://github.com/stackbook/stacker --token TOKEN
-
+RUN ./config.sh --url https://github.com/stackbook/stacker --token ABWBMWKJK6H6QOICN6NWYADCJELFS
 
 CMD ["/bin/bash", "/actions-runner/runLoop.sh"]

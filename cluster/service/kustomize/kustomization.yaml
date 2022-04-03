@@ -4,5 +4,6 @@ metadata:
   name: sample
 commonLabels:
   app: sample
-- deployment.yaml
-- service.yaml
+resources:
+  - deployment.yaml
+  - service.yaml
