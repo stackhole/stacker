@@ -1,0 +1,31 @@
+name: Generate Certificate
+on:
+  workflow_dispatch:
+    inputs:
+      domainRoot:
+        type: string
+        default: stackr.com
+        required: true
+      appDomain:
+        type: string
+        default: api
+        required: true
+      organization:
+        type: string
+        default: stackr
+        required: true
+jobs:
+  generate-certificate:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj "/O=$ORGANIZATION/CN=$DOMAIN_ROOT" -keyout $DOMAIN_ROOT.key -out $DOMAIN_ROOT.crt
+          openssl req -out $APP_DOMAIN.$DOMAIN_ROOT.csr -newkey rsa:2048 -nodes -keyout $APP_DOMAIN.$DOMAIN_ROOT.key -subj "/CN=$APP_DOMAIN.$DOMAIN_ROOT/O=$ORGANIZATION"
+          openssl x509 -req -sha256 -days 365 -CA $DOMAIN_ROOT.crt -CAkey $DOMAIN_ROOT.key -set_serial 1 -in $APP_DOMAIN.$DOMAIN_ROOT.csr -out $APP_DOMAIN.$DOMAIN_ROOT.crt
+          kubectl create -n istio-system secret tls $APP_DOMAIN-credential --key=$APP_DOMAIN.$DOMAIN_ROOT.key --cert=$APP_DOMAIN.$DOMAIN_ROOT.crt
+        env:
+          - DOMAIN_ROOT: ${{ github.event.inputs.domainRoot }}
+          - APP_DOMAIN: ${{ github.event.inputs.appDomain }}
+          - ORGANIZATION: ${{ github.event.inputs.organization }}
+
