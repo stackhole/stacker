@@ -7,3 +7,4 @@ commonLabels:
 resources:
 - gateway.yaml
 - virtual-service.yaml
+- database-service.yaml

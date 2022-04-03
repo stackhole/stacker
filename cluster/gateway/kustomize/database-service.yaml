@@ -7,14 +7,11 @@ spec:
   - "*"
   gateways:
   - api-gateway
-  http:
+  tcp:
   - match:
-    - uri:
-        prefix: /sample/
-    rewrite:
-      uri: /
+    - port: 5432
     route:
     - destination:
+        host: database-service.default.svc.cluster.local
         port:
-          number: 80
-        host: sample-service.default.svc.cluster.local
+          number: 5432

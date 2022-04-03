@@ -1,5 +1,7 @@
 #!/bin/bash -xe
 sudo apt install -y emacs-nox
+sudo apt install -y open-iscsi
+sudo systemctl enable iscsid
 sudo snap install microk8s --classic 
 sudo snap install kubectl  --classic 
 microk8s status --wait-ready
