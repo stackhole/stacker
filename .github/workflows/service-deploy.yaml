@@ -1,4 +1,4 @@
-name: Inject Istio Namespace
+name: Sample Service Deploy
 on:
   workflow_dispatch:
     inputs:
