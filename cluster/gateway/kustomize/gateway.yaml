@@ -22,4 +22,4 @@ spec:
     - "*"
     tls:
       mode: SIMPLE # enables HTTPS on this port
-      credentialName: api-secret # need to generate certificate first. see .github/workflows/generate-cert.yaml
+      credentialName: api-credential # need to generate certificate first. see .github/workflows/generate-cert.yaml
