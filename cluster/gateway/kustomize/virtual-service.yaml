@@ -7,6 +7,14 @@ spec:
   - "*"
   gateways:
   - api-gateway
+  tcp:
+  - match:
+    - port: 5432
+    route:
+    - destination:
+        host: database-service
+        port:
+          number: 5432
   http:
   - match:
     - uri:
