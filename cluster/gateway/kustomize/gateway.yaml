@@ -11,7 +11,7 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "api.stackr.com"
+    - "*"
     tls:
       httpsRedirect: true # sends 301 redirect for http requests
   - port:
@@ -19,7 +19,7 @@ spec:
       name: https-443
       protocol: HTTPS
     hosts:
-    - "api.stackr.com"
+    - "*"
     tls:
       mode: SIMPLE # enables HTTPS on this port
       credentialName: api-credential # need to generate certificate first. see .github/workflows/generate-cert.yaml
