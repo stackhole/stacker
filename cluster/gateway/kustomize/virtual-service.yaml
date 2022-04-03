@@ -10,9 +10,9 @@ spec:
   http:
   - match:
     - uri:
-        prefix: /sample/*
+        prefix: "/sample"
     route:
     - destination:
         port:
           number: 80
-        host: sample-service
+        host: sample-service.svc.cluster.local
