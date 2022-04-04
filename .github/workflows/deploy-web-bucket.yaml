@@ -28,6 +28,6 @@ jobs:
           echo "<HTML><B>Hello World!</B></HTML>" > index.html
           ./mc cp index.html myminio/static/
         env:
-          - BUCKET_NAME: ${{ github.event.inputs.bucketName }}
-          - ACCESS_KEY_ID: ${{ github.event.inputs.accessKeyId }}
-          - SECRET_ACCESS_KEY: ${{ github.event.inputs.secretAccessKey }}
+          BUCKET_NAME: ${{ github.event.inputs.bucketName }}
+          ACCESS_KEY_ID: ${{ github.event.inputs.accessKeyId }}
+          SECRET_ACCESS_KEY: ${{ github.event.inputs.secretAccessKey }}
