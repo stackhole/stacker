@@ -5,7 +5,8 @@ metadata:
 commonLabels:
   app: gateway
 resources:
-- gateway.yaml
-- virtual-service.yaml
+- http-gateway.yaml
+- api-service.yaml
 - database-gateway.yaml
 - database-service.yaml
+- web-service.yaml

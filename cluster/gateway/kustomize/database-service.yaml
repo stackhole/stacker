@@ -6,7 +6,7 @@ spec:
   hosts:
   - "*"
   gateways:
-  - api-gateway
+  - database-gateway
   tcp:
   - match:
     - port: 5432

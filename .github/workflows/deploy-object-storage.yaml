@@ -1,0 +1,10 @@
+name: Deploy Minio
+on: workflow_dispatch
+jobs:
+  deploy-minio:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          cd cluster/object-storage
+          kubectl apply -k kustomize

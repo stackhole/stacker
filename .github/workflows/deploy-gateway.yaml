@@ -9,3 +9,4 @@ jobs:
           cd cluster/gateway
           kubectl apply -k kustomize
           kubectl -n istio-system patch svc istio-ingressgateway --type=json -p='[{"op": "add","path": "/spec/ports/-","value": {"name":"preview","nodePort":31432,"port":5432,"protocol":"TCP","targetPort":5432}}]' --dry-run=true -o yaml | kubectl apply -f -
+          
