@@ -23,9 +23,4 @@ spec:
     tls:
       mode: SIMPLE # enables HTTPS on this port
       credentialName: api-credential # need to generate certificate first. see .github/workflows/generate-cert.yaml
-  - port:
-      number: 5432 # to expose internal service via external port 2379
-      name: postgres
-      protocol: TCP
-    hosts:
-    - "*"
+      

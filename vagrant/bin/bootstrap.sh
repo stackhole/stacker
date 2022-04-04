@@ -10,7 +10,8 @@ microk8s config > /home/vagrant/.kube/config
 usermod -a -G microk8s vagrant
 chown -f -R vagrant /home/vagrant/.kube
 
-microk8s enable dns registry
+microk8s enable dns registry fluentd
+microk8s.kubectl port-forward -n kube-system service/kibana-logging 8181:5601
 
 curl https://get.docker.com | sh -
 usermod -aG docker vagrant
