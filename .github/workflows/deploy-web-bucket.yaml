@@ -1,4 +1,4 @@
-name: Deploy Minio
+name: Create Web Bucket
 on:
   workflow_dispatch:
     inputs:
@@ -15,7 +15,7 @@ on:
         default: CHANGE_ME
         required: true
 jobs:
-  deploy-minio:
+  create-web-bucket:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
