@@ -23,7 +23,7 @@ jobs:
           cd /home/actions-runner
           ./mc alias set minio http://192.168.1.207:30901 $ACCESS_KEY_ID $SECRET_ACCESS_KEY
           ./mc mb $BUCKET_NAME
-          ./mc policy wnload $BUCKET_NAME
+          ./mc policy set download minio/$BUCKET_NAME
           echo "<HTML><B>Hello World!</B></HTML>" > index.html
           ./mc cp index.html myminio/static/
         env:
