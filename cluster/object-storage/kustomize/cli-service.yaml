@@ -10,4 +10,4 @@ spec:
     - protocol: TCP
       port: 9001
       targetPort: 9001
-      nodePort: 9001 # make console available via NodePort
+      nodePort: 30901 # make console available via NodePort
