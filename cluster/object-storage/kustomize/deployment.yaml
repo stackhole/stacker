@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: minio
-          image: minio:minio
+          image: minio/minio:latest
           ports:
             - containerPort: 9000
             - containerPort: 9001
