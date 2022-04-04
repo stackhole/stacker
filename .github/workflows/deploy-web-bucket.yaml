@@ -4,7 +4,7 @@ on:
     inputs:
       bucketName:
         type: string
-        default: myminio/static
+        default: static
         required: true
       accessKeyId:
         type: string
@@ -21,11 +21,11 @@ jobs:
       - uses: actions/checkout@v2
       - run: |
           cd /home/actions-runner
-          ./mc alias set minio http://192.168.1.207:30901 $ACCESS_KEY_ID $SECRET_ACCESS_KEY
+          ./mc alias set minio http://minio-cli-service.default.svc.cluster.local:9000 $ACCESS_KEY_ID $SECRET_ACCESS_KEY
           ./mc mb $BUCKET_NAME
           ./mc policy set download minio/$BUCKET_NAME
-          echo "<HTML><B>Hello World!</B></HTML>" > index.html
-          ./mc cp index.html myminio/static/
+          echo '<HTML><B>Hello World!</B></HTML>' > index.html
+          ./mc cp index.html minio/$BUCKET_NAME
         env:
           BUCKET_NAME: ${{ github.event.inputs.bucketName }}
           ACCESS_KEY_ID: ${{ github.event.inputs.accessKeyId }}
