@@ -16,6 +16,13 @@ RUN ./bin/installdependencies.sh
 # Transfer ownership to the new user
 RUN chown actions-runner /actions-runner
 
+# Setup minio cli
+RUN mkdir /home/actions-runner
+RUN chown actions-runner /home/actions-runner
+RUN chmod a+rw /home/actions-runner
+RUN curl https://dl.min.io/client/mc/release/linux-amd64/mc -o /home/actions-runner/mc
+RUN chmod a+rx /home/actions-runner/mc
+
 # Allow runner to update itself
 COPY runLoop.sh .
 RUN chmod -R a+rw /actions-runner
@@ -25,6 +32,6 @@ RUN chmod a+x runLoop.sh
 USER actions-runner
 
 # Run the config script
-RUN ./config.sh --url https://github.com/stackbook/stacker --token ABWBMWKJK6H6QOICN6NWYADCJELFS
+RUN ./config.sh --url https://github.com/stackbook/stacker --token ABWBMWIPIXTS67VI7PJOQ5LCJKA2I
 
 CMD ["/bin/bash", "/actions-runner/runLoop.sh"]
