@@ -11,8 +11,6 @@ spec:
   - match:
     - uri:
         prefix: /static/
-    rewrite:
-      uri: /static/
     route:
     - destination:
         port:
