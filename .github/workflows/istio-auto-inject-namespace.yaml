@@ -11,7 +11,7 @@ on:
         default: 1.13.2
         required: true
 jobs:
-  deploy-istio:
+  inject-istio-namespace:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2

@@ -7,6 +7,4 @@ commonLabels:
 resources:
 - http-gateway.yaml
 - api-service.yaml
-- database-gateway.yaml
-- database-service.yaml
 - web-service.yaml
