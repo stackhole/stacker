@@ -20,6 +20,6 @@ jobs:
           export PATH="$PATH:/actions-runner/_work/stacker/stacker/istio-$ISTIO_VERSION/bin"
           kubectl label namespace $NAMESPACE istio-injection=enabled
         env:
-          - ISTIO_VERSION: ${{ github.event.inputs.istioVersion }}
-          - NAMESPACE: ${{ github.event.inputs.namespace }}
+          ISTIO_VERSION: ${{ github.event.inputs.istioVersion }}
+          NAMESPACE: ${{ github.event.inputs.namespace }}
 
