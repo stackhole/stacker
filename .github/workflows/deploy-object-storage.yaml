@@ -1,4 +1,4 @@
-name: Deploy Minio
+name: 04 - Deploy Minio
 on: workflow_dispatch
 jobs:
   deploy-minio:

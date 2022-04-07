@@ -1,4 +1,4 @@
-name: Inject Istio Namespace
+name: 02 - Inject Istio Namespace
 on:
   workflow_dispatch:
     inputs:

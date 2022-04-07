@@ -1,4 +1,4 @@
-name: Deploy Istio Gateway
+name: 06 - Deploy Istio Gateway
 on: workflow_dispatch
 jobs:
   deploy-gateway:

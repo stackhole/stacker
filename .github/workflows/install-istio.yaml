@@ -1,4 +1,4 @@
-name: Install Istio
+name: 01 - Install Istio
 on:
   workflow_dispatch:
     inputs:

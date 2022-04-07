@@ -1,4 +1,4 @@
-name: Generate Certificate
+name: 03 - Generate Certificate
 on:
   workflow_dispatch:
     inputs:
