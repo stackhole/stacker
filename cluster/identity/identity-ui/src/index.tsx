@@ -37,7 +37,7 @@ const routes = [
 
 root.render(
   <React.StrictMode>
-    <Router basename={process.env.REACT_APP_BASE_NAME}>
+    <Router basename={`${process.env.REACT_APP_BASE_NAME||''}/view`}>
       <Routes>
         {routes}
       </Routes>
