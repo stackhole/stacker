@@ -1,0 +1,29 @@
+name: 07 - Deploy Identity UI
+on:
+  workflow_dispatch:
+    inputs:
+      bucketName:
+        type: string
+        default: identity-ui
+        required: true
+      accessKeyId:
+        type: string
+        default: CHANGE_ME
+        required: true
+      secretAccessKey:
+        type: string
+        default: CHANGE_ME
+        required: true
+jobs:
+  create-web-bucket:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          /home/actions-runner/mc alias set minio http://minio-cli-service.default.svc.cluster.local:9000 $ACCESS_KEY_ID $SECRET_ACCESS_KEY
+          npm run build
+          /home/actions-runner/mc cp --recursive build/* minio/$BUCKET_NAME
+        env:
+          BUCKET_NAME: ${{ github.event.inputs.bucketName }}
+          ACCESS_KEY_ID: ${{ github.event.inputs.accessKeyId }}
+          SECRET_ACCESS_KEY: ${{ github.event.inputs.secretAccessKey }}

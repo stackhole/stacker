@@ -1,0 +1,43 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: identity
+spec:
+  hosts:
+  - ""
+  gateways:
+  - http-gateway
+  http:
+  - name: Login provider
+    match:
+    - uri:
+        prefix: /authn/
+    rewrite:
+      uri: /authn/
+    route:
+    - destination:
+        port:
+          number: 3000
+        host: login.default.svc.cluster.local
+  - name: OIDC provider
+    match:
+    - uri:
+        prefix: /oidc/
+    rewrite:
+      uri: /oidc/
+    route:
+    - destination:
+        port:
+          number: 3000
+        host: hydra.default.svc.cluster.local
+  - name: Front End
+    match:
+    - uri:
+        prefix: /login/
+    rewrite:
+      uri: /identity-ui/index.html
+    route:
+    - destination:
+        port:
+          number: 9000
+        host: minio-service.default.svc.cluster.local
