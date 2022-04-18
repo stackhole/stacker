@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './AuthenticatePage.css';
 import { Link, useParams } from 'react-router-dom';
 

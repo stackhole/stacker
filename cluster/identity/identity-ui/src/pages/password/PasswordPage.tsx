@@ -1,6 +1,5 @@
 import { Button, TextField } from '@mui/material';
 import axios from 'axios';
-import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './PasswordPage.css';
 
