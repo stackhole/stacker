@@ -20,3 +20,4 @@ newgrp docker
 microk8s enable dns registry
 microk8s enable metallb:192.168.1.70/32
 microk8s enable openebs
+

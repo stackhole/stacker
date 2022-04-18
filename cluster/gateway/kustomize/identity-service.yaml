@@ -13,7 +13,7 @@ spec:
     - uri:
         prefix: /authn/
     rewrite:
-      uri: /authn/
+      uri: /
     route:
     - destination:
         port:
@@ -24,13 +24,13 @@ spec:
     - uri:
         prefix: /oidc/
     rewrite:
-      uri: /oidc/
+      uri: /
     route:
     - destination:
         port:
           number: 3000
         host: hydra.default.svc.cluster.local
-  - name: Front Resources
+  - name: Front End Resources
     match:
     - uri:
         regex: \/login\/view\/.*

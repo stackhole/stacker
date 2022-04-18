@@ -15,7 +15,9 @@ function App() {
       <TextField id="password" label="Password" type="password" variant="standard" />
       <Button onClick={async () => {
         try{
-          const result = await axios.get("/");
+          const result = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/password`, {
+            challenge
+          });
           console.log(result.data);
           navigate("/success");
         }
