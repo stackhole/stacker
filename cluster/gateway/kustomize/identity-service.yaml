@@ -30,12 +30,23 @@ spec:
         port:
           number: 3000
         host: hydra.default.svc.cluster.local
-  - name: Front End
+  - name: Front Resources
     match:
     - uri:
-        regex: \/login\/.*
+        regex: \/login\/view\/.*
     rewrite:
       uri: /identity-ui/index.html
+    route:
+    - destination:
+        port:
+          number: 9000
+        host: minio-service.default.svc.cluster.local
+  - name: Front End Routing
+    match:
+    - uri:
+        prefix: /login
+    rewrite:
+      uri: /identity-ui
     route:
     - destination:
         port:
