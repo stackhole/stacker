@@ -8,3 +8,4 @@ resources:
 - http-gateway.yaml
 - api-service.yaml
 - web-service.yaml
+- identity-service.yaml
