@@ -33,7 +33,7 @@ spec:
   - name: Front End
     match:
     - uri:
-        prefix: /login/
+        prefix: /login/*
     rewrite:
       uri: /identity-ui/index.html
     route:
