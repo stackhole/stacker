@@ -5,7 +5,7 @@ jobs:
   deploy-identity-api:
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v2s
+      - uses: actions/checkout@v2
       - run: |
           cd cluster/identity/oidc
           docker build . -t localhost:32000/oidc:latest
