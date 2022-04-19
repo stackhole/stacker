@@ -6,6 +6,9 @@ metadata:
     app: oidc-postgres
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: oidc-postgres
   template:
     metadata:
       labels:
