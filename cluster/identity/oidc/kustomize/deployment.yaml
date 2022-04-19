@@ -16,7 +16,7 @@ spec:
     spec:
       initContainers:
         - name: hydra-migrations
-          imagePullPolicy: Alwaysk
+          imagePullPolicy: Always
           image: localhost:32000/hydra:latest
           command: ['hydra']
           args: ['migrate','-c', "/etc/config/hydra/hydra.yml", "sql", "-e", "--yes"]
