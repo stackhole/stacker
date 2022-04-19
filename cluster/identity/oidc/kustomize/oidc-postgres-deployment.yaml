@@ -11,20 +11,48 @@ spec:
       labels:
         app: oidc-postgres
     spec:
+      initContainers:
+        - name: hydra-migrations
+          imagePullPolicy: Always
+          image: localhost:32000/hydra:latest
+          command: ['migrate']
+          args: ['-c', "/etc/config/hydra/hydra.yml", "sql", "-e", "--yes"]
+          env:
+            - name: DSN
+              value: postgres://hydra:hydrapostgres@localhost:5432/hydra?sslmode=disable&max_conns=20&max_idle_conns=4
       containers:
+        - name: hydra
+          image: localhost:32000/hydra:latest
+          ports:
+            - containerPort: 4444
+            - containerPort: 4445
+            - containerPort: 5555 #TODO: remove?
+          env:
+            - name: DSN
+              value: postgres://hydra:hydrapostgres@localhost:5432/hydra?sslmode=disable&max_conns=20&max_idle_conns=4
+          command: ["serve"]
+          args: ["-c", "/etc/config/hydra/hydra.yml","all","--dangerous-force-http"]
+        - name: oidc
+          image: localhost:32000/oidc:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: HYDRA_ADMIN_URL
+              value: http://localhost:4445
         - name: postgresql
           image: postgres:14-alpine
           ports:
             - containerPort: 5432
           env:
             - name: POSTGRES_USER
-              value: postgres
+              value: hydra
             - name: POSTGRES_PASSWORD
-              value: postgres
+              value: hydrapostgres
             - name: PGDATA
               value: /var/lib/postgresql/data/pgdata
             - name: POSTGRES_DB
-              value: sample
+              value: hydra
           volumeMounts:
           - mountPath: /var/lib/postgresql/data
             name: postgres-volume

@@ -1,0 +1,22 @@
+serve:
+  cookies:
+    same_site_mode: Lax
+
+urls:
+  self:
+    issuer: https://192.168.1.70/oidc
+  consent: https://192.168.1.70/login/view/consent
+  login: https://192.168.1.70/login/view/authenticate
+  logout: https://192.168.1.70/login/view/logout
+
+secrets:
+  system:
+    - youReallyNeedToChangeThis
+
+oidc:
+  subject_identifiers:
+    supported_types:
+      - pairwise
+      - public
+    pairwise:
+      salt: youReallyNeedToChangeThis

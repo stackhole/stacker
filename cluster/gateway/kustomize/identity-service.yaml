@@ -18,7 +18,7 @@ spec:
     - destination:
         port:
           number: 3000
-        host: login.default.svc.cluster.local
+        host: oidc-login.default.svc.cluster.local
   - name: OIDC provider
     match:
     - uri:

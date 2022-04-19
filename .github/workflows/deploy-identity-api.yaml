@@ -5,18 +5,9 @@ jobs:
   deploy-identity-api:
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v2
-      - run: cd cluster/identity/identity-ui
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
+      - uses: actions/checkout@v2s
       - run: |
-          cd cluster/identity/identity-ui
-          npm install
-          npm run build
-          /home/actions-runner/mc alias set minio http://minio-cli-service.default.svc.cluster.local:9000 $ACCESS_KEY_ID $SECRET_ACCESS_KEY
-          /home/actions-runner/mc cp --recursive build/* minio/$BUCKET_NAME
-        env:
-          BUCKET_NAME: ${{ github.event.inputs.bucketName }}
-          ACCESS_KEY_ID: ${{ github.event.inputs.accessKeyId }}
-          SECRET_ACCESS_KEY: ${{ github.event.inputs.secretAccessKey }}
+          cd cluster/identity/oidc
+          docker build . -t localhost:32000/oidc:latest
+          docker push localhost:32000/oidc:latest
+          kubectl apply -k kustomize

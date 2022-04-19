@@ -1,0 +1,11 @@
+name: 10 - Build and Publish Hydra
+on: workflow_dispatch
+jobs:
+  build-hydra:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          cd cluster/identity/oidc
+          docker build -f Dockerfile-hydra . -t localhost:32000/hydra:latest
+          docker push localhost:32000/hydra:latest
