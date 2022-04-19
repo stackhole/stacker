@@ -4,5 +4,7 @@ metadata:
   name: oidc-kustomize
 resources:
   - pvc.yaml
+  - db-deployment.yaml
+  - db-service.yaml
   - deployment.yaml
   - service.yaml

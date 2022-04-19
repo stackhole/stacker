@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oidc-db
+  labels:
+    app: oidc-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oidc-db
+  template:
+    metadata:
+      labels:
+        app: oidc-db
+    spec:
+      containers:
+        - name: postgresql
+          image: postgres:14-alpine
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              value: hydra
+            - name: POSTGRES_PASSWORD
+              value: hydrapostgres
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+            - name: POSTGRES_DB
+              value: hydra
+          volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: postgres-volume
+      volumes:
+        - name: postgres-volume
+          persistentVolumeClaim:
+            claimName: oidc-postgres-claim
