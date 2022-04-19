@@ -16,10 +16,10 @@ spec:
     spec:
       initContainers:
         - name: hydra-migrations
-          imagePullPolicy: Always
+          imagePullPolicy: Alwaysk
           image: localhost:32000/hydra:latest
-          command: ['migrate']
-          args: ['-c', "/etc/config/hydra/hydra.yml", "sql", "-e", "--yes"]
+          command: ['hydra']
+          args: ['migrate','-c', "/etc/config/hydra/hydra.yml", "sql", "-e", "--yes"]
           env:
             - name: DSN
               value: postgres://hydra:hydrapostgres@oidc-db.default.svc.cluster.local:5432/hydra?sslmode=disable&max_conns=20&max_idle_conns=4
@@ -33,8 +33,8 @@ spec:
           env:
             - name: DSN
               value: postgres://hydra:hydrapostgres@oidc-db.default.svc.cluster.local:5432/hydra?sslmode=disable&max_conns=20&max_idle_conns=4
-          command: ["serve"]
-          args: ["-c", "/etc/config/hydra/hydra.yml","all","--dangerous-force-http"]
+          command: ["hydra"]
+          args: ["serve","-c", "/etc/config/hydra/hydra.yml","all","--dangerous-force-http"]
         - name: oidc
           image: localhost:32000/oidc:latest
           imagePullPolicy: Always
