@@ -1,0 +1,35 @@
+name: 08 - Deploy User UI
+on:
+  workflow_dispatch:
+    inputs:
+      bucketName:
+        type: string
+        default: user-ui
+        required: true
+      accessKeyId:
+        type: string
+        default: CHANGE_ME
+        required: true
+      secretAccessKey:
+        type: string
+        default: CHANGE_ME
+        required: true
+jobs:
+  deploy-user-ui:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd cluster/identity/user-ui
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: |
+          cd cluster/identity/user-ui
+          npm install
+          npm run build
+          /home/actions-runner/mc alias set minio http://minio-cli-service.default.svc.cluster.local:9000 $ACCESS_KEY_ID $SECRET_ACCESS_KEY
+          /home/actions-runner/mc cp --recursive build/* minio/$BUCKET_NAME
+        env:
+          BUCKET_NAME: ${{ github.event.inputs.bucketName }}
+          ACCESS_KEY_ID: ${{ github.event.inputs.accessKeyId }}
+          SECRET_ACCESS_KEY: ${{ github.event.inputs.secretAccessKey }}

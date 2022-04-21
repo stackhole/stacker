@@ -8,6 +8,28 @@ spec:
   gateways:
   - http-gateway
   http:
+  - name: User Management
+    match:
+    - uri:
+        regex: \/user\/view\/.*
+    rewrite:
+      uri: /user-ui/index.html
+    route:
+    - destination:
+        port:
+          number: 9000
+        host: minio-service.default.svc.cluster.local
+  - name: User Management Routing
+    match:
+    - uri:
+        prefix: /user
+    rewrite:
+      uri: /user-ui
+    route:
+    - destination:
+        port:
+          number: 9000
+        host: minio-service.default.svc.cluster.local
   - name: Login provider
     match:
     - uri:
