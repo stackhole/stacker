@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: oidc-admin
+spec:
+  selector:
+    app: oidc-postgres
+  ports:
+    - protocol: TCP
+      name: hydra-admin
+      port: 80
+      targetPort: 4445

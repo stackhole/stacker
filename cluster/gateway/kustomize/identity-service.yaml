@@ -28,8 +28,8 @@ spec:
     route:
     - destination:
         port:
-          number: 3000
-        host: hydra.default.svc.cluster.local
+          number: 4444
+        host: oidc-login.default.svc.cluster.local
   - name: Front End Resources
     match:
     - uri:

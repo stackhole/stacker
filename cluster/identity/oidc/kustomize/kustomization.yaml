@@ -8,3 +8,4 @@ resources:
   - db-service.yaml
   - deployment.yaml
   - service.yaml
+  - admin-service.yaml
