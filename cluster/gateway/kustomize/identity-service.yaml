@@ -43,8 +43,8 @@ spec:
         host: oidc-login.default.svc.cluster.local
     corsPolicy: &apiCorsPolicy
       allowOrigins:
-      - 'https://*'
-      - 'http://*'
+      - regex: 'https://*'
+      - regex: 'http://*'
       allowMethods:
       - GET
       - POST
