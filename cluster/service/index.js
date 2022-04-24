@@ -15,9 +15,6 @@ const credentials = {
 
 const pool = new Pool(credentials)
 
-
-
-
 app.get('/hello', (req, res) => {
   res.send('hello world')
 })

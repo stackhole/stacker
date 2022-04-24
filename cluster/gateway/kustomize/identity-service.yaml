@@ -41,6 +41,15 @@ spec:
         port:
           number: 3000
         host: oidc-login.default.svc.cluster.local
+    corsPolicy: &apiCorsPolicy
+      allowOrigin:
+      - 'https://*'
+      allowMethods:
+      - GET
+      - POST
+      allowCredentials: false
+      allowHeaders:
+      - DNT
   - name: OIDC provider
     match:
     - uri:
@@ -52,6 +61,7 @@ spec:
         port:
           number: 4444
         host: oidc-login.default.svc.cluster.local
+    corsPolicy: *apiCorsPolicy
   - name: Front End Resources
     match:
     - uri:

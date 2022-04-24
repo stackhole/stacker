@@ -3,25 +3,33 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Issuer } from 'openid-client';
+import { AuthorizationServiceConfiguration, RedirectRequestHandler, LocalStorageBackend, DefaultCrypto, FetchRequestor } from '@openid/appauth';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
+const oidcUrl="https://192.168.1.70/oidc";
+AuthorizationServiceConfiguration.fetchFromIssuer(oidcUrl, new FetchRequestor())
+            .then((response) => {
+              console.log(JSON.stringify(response,null,4));
+              /*
+                const authRequest = new AuthorizationRequest({
+                    client_id: environment.clientId,
+                    redirect_uri: environment.redirectURL,
+                    scope: environment.scope,
+                    response_type: AuthorizationRequest.RESPONSE_TYPE_CODE,
+                    state: undefined,
+                    // extras: environment.extra
+                });
+                authorizationHandler.performAuthorizationRequest(response, authRequest);*/
+            })
+            .catch(error => {
+              console.log(error);
+            });
 
-const identityIssuer = await Issuer.discover('https://192.168.1.70/oidc');
-console.log('Discovered issuer %s %O', identityIssuer.issuer, identityIssuer.metadata);
-/*
-const client = new identityIssuer.Client({
-  client_id: 'zELcpfANLqY7Oqas',
-  client_secret: 'TQV5U29k1gHibH5bx1layBo0OSAvAbRT3UYW3EWrSYBB5swxjVfWUa1BS8lqzxG/0v9wruMcrGadany3',
-  redirect_uris: ['http://localhost:3000/view/user/me'],
-  response_types: ['code'],
-  // id_token_signed_response_alg (default "RS256")
-  // token_endpoint_auth_method (default "client_secret_basic")
-}); // => Client
-*/
+
 const Fallback = () => <div>Loading...</div>
 
 const RouteDefinition = (routeDefinition:any) => {
