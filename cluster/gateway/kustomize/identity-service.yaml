@@ -33,7 +33,7 @@ spec:
   - name: Login provider
     match:
     - uri:
-        prefix: /authn/
+        prefix: /authn
     rewrite:
       uri: /
     route:
@@ -57,7 +57,7 @@ spec:
   - name: OIDC provider
     match:
     - uri:
-        prefix: /oidc/
+        prefix: /oidc
     rewrite:
       uri: /
     route:
