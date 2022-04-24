@@ -42,11 +42,15 @@ spec:
           number: 3000
         host: oidc-login.default.svc.cluster.local
     corsPolicy: &apiCorsPolicy
-      allowOrigin:
+      allowOrigins:
       - 'https://*'
+      - 'http://*'
       allowMethods:
       - GET
       - POST
+      - PUT
+      - DELETE
+      - OPTION
       allowCredentials: false
       allowHeaders:
       - DNT
