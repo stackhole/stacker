@@ -3,31 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { AuthorizationServiceConfiguration, RedirectRequestHandler, LocalStorageBackend, DefaultCrypto, FetchRequestor } from '@openid/appauth';
-
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const oidcUrl="https://192.168.1.70/oidc";
-AuthorizationServiceConfiguration.fetchFromIssuer(oidcUrl, new FetchRequestor())
-            .then((response) => {
-              console.log(JSON.stringify(response,null,4));
-              /*
-                const authRequest = new AuthorizationRequest({
-                    client_id: environment.clientId,
-                    redirect_uri: environment.redirectURL,
-                    scope: environment.scope,
-                    response_type: AuthorizationRequest.RESPONSE_TYPE_CODE,
-                    state: undefined,
-                    // extras: environment.extra
-                });
-                authorizationHandler.performAuthorizationRequest(response, authRequest);*/
-            })
-            .catch(error => {
-              console.log(error);
-            });
+
 
 
 const Fallback = () => <div>Loading...</div>
@@ -44,13 +25,21 @@ const RouteDefinition = (routeDefinition:any) => {
 const routes = [
   {
     page: React.lazy(() => import('./pages/user/UserPage')) ,
-    route: '/user/:id'
+    route: '/view/user/:id'
   },
+  {
+    page: React.lazy(() => import('./pages/callback/Callback')) ,
+    route: '/view/callback'
+  },
+  /*{
+    page: React.lazy(() => import('./pages/callback/CallbackPage')) ,
+    route: '/callback'
+  },*/
 ].map(RouteDefinition);
 
 root.render(
-  <React.StrictMode>
-    <Router basename={`${process.env.REACT_APP_BASE_NAME||''}/view`}>
+  <React.StrictMode>g
+    <Router basename={`${process.env.REACT_APP_BASE_NAME||''}`}>
       <Routes>
         {routes}
       </Routes>
