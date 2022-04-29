@@ -6,12 +6,14 @@ spec:
   hosts:
   - "*"
   gateways:
-  - spinnaker-gateway
+  - http-gateway
   http:
   - name: Spinnaker
     match:
     - uri:
-        prefix: /
+        prefix: /spinnaker/
+    rewrite:
+      uri: /
     route:
     - destination:
         port:
