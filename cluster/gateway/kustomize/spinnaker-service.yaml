@@ -19,3 +19,14 @@ spec:
         port:
           number: 9000
         host: spin-deck.spinnaker.svc.cluster.local
+  - name: Spinnaker Gateway
+    match:
+    - uri:
+        prefix: /spin-gate/
+    rewrite:
+      uri: /
+    route:
+    - destination:
+        port:
+          number: 8084
+        host: spin-gate.spinnaker.svc.cluster.local
