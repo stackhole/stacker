@@ -1,7 +1,7 @@
-name: 10 - Deploy Erigon
+name: 11 - Deploy Erigon
 on: workflow_dispatch
 jobs:
-  deploy-gateway:
+  deploy-erigon:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
