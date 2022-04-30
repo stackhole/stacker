@@ -22,7 +22,7 @@ spec:
               cpu: "16000m"
           image: localhost:32000/erigon
           command: ["erigon"]
-          args: ["--datadir", "/data", "--chain", "mainnet", "--http", "--ws"]
+          args: ["--datadir", "/data", "--chain", "mainnet", "--private.api.addr","0.0.0.0:9090"]
           ports:
             - containerPort: 30303
             - containerPort: 9090
