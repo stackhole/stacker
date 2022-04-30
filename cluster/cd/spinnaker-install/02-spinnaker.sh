@@ -19,13 +19,11 @@ cat ~/.hal/default/profiles/front50-local.yml
 
 MINIO_SECRET_KEY=CHANGE_ME
 MINIO_ACCESS_KEY=CHANGE_ME
-ENDPOINT=minio-cli-service.default.svc.cluster.local:9000
+ENDPOINT=http://minio-cli-service.default.svc.cluster.local:9000
 
-echo $MINIO_SECRET_KEY | hal config storage s3 edit --endpoint $ENDPOINT --access-key-id $MINIO_ACCESS_KEY --secret-access-key 
-                        
-hal config storage edit --type s3
+echo $MINIO_SECRET_KEY | hal config storage s3 edit --endpoint $ENDPOINT --access-key-id $MINIO_ACCESS_KEY --secret-access-key --path-style-access true
+
 hal deploy apply
-hal deploy connect
 
 ######
 hal config security ui edit --override-base-url https://192.168.1.70/spinnaker/

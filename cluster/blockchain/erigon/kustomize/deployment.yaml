@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: erigon
+  labels:
+    app: erigon
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: erigon
+    spec:
+      containers:
+        - name: erigon
+          image: localhost:32000/erigon
+          command: erigon
+          args: ["--datadir","/data","--chain","mainnet","--syncmode"."snap","--http","--ws"]
+          ports:
+            - containerPort: 30303
+            - containerPort: 9090
+            - containerPort: 9091
+            - containerPort: 9092
+            - containerPort: 9093
+            - containerPort: 9094
+          volumeMounts:
+          - mountPath: /data
+            name: erigon-volume
+      volumes:
+        - name: erigon-volume
+          persistentVolumeClaim:
+            claimName: erigon-claim

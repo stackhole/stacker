@@ -1,0 +1,11 @@
+kind: PersistentVolumeClaim 
+apiVersion: v1
+metadata:
+  name: erigon-claim
+spec:
+  storageClassName: erigon-hostpath
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3500G

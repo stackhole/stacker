@@ -1,0 +1,11 @@
+name: 10 - Deploy Erigon
+on: workflow_dispatch
+jobs:
+  deploy-gateway:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          cd cluster/blockchain/erigon
+          kubectl apply -k kustomize
+          

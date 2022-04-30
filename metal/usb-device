@@ -1,0 +1,13 @@
+blkid
+sudo gdisk /dev/sdb
+d
+w
+n
+w
+sudo mkfs.ext4 /dev/sdb1
+sudo mkdir /mnt/usb1
+sudo mount /dev/sdb1
+sudo umount /dev/sdb1
+sudo blkid
+/etc/fstab
+UUID=UUID /mnt/usb1 ext4 defaults 0 0
