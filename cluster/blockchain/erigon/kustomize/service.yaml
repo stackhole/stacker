@@ -8,14 +8,17 @@ spec:
     app: erigon
   ports:
     - protocol: TCP
+      name: ethtcp
       port: 30303
       targetPort: 30303
       nodePort: 30303
     - protocol: UDP
+      name: ethudp
       port: 30303
       targetPort: 30303
       nodePort: 30303
     - protocol: TCP
+      name: ethhttp
       port: 9090
       targetPort: 9090
       nodePort: 30909
