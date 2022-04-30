@@ -21,7 +21,7 @@ spec:
               memory: "64G"
               cpu: "16000m"
           image: localhost:32000/erigon
-          command: erigon
+          command: ["erigon"]
           args: ["--datadir","/data","--chain","mainnet","--syncmode"."snap","--http","--ws"]
           ports:
             - containerPort: 30303
