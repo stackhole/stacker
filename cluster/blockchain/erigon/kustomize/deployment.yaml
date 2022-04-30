@@ -13,6 +13,13 @@ spec:
     spec:
       containers:
         - name: erigon
+          resources:
+            requests:
+              memory: "16G"
+              cpu: "4000m"
+            limits:
+              memory: "64G"
+              cpu: "16000m"
           image: localhost:32000/erigon
           command: erigon
           args: ["--datadir","/data","--chain","mainnet","--syncmode"."snap","--http","--ws"]
