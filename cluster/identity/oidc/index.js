@@ -1,6 +1,7 @@
 // This example uses ExpressJS
 import express from 'express'
 import login from './password.js'
+import ping from './ping.js'
 import cors from 'cors'
 
 const app = express()
@@ -12,7 +13,9 @@ app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }));
-app.use('/', login);
+app.use('/login', login);
+app.use('/ping', ping);
+
 
 app.listen(port, () => {
     console.log(`Login provider listening on port ${port}`)
