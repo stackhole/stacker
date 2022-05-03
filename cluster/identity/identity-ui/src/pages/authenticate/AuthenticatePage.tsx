@@ -11,7 +11,7 @@ function AuthenticatePage() {
     <div>
       <h1>Choose an authentication method</h1>
       <nav>
-        <Link to={`/password/${searchParams.get("login-challenge")}`}>Password</Link>
+        <Link to={`/password/${searchParams.get("login_challenge")}`}>Password</Link>
       </nav>
     </div>
   );
