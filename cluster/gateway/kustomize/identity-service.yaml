@@ -33,7 +33,7 @@ spec:
   - name: Login provider
     match:
     - uri:
-        prefix: /authn/
+        prefix: /authn
     rewrite:
       uri: /
     route:
