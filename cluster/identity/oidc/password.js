@@ -1,5 +1,5 @@
 import express from 'express'
-import { hydraAdmin } from './config'
+import hydraAdmin from './config.js'
 
 // Sets up csrf protection
 const router = express.Router()

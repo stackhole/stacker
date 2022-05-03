@@ -10,4 +10,4 @@ const hydraAdmin = new AdminApi(
   })
 )
 
-export { hydraAdmin }
+export default hydraAdmin
