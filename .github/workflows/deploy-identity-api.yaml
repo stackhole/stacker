@@ -1,6 +1,8 @@
 name: 09 - Deploy Identity API
 on:
-  workflow_dispatch
+  push:
+    paths:
+      - cluster/identity/oidc/**
 jobs:
   deploy-identity-api:
     runs-on: self-hosted
