@@ -9,7 +9,6 @@ router.post('/password',  (req, res, next) => {
   .getLoginRequest(req.body.challenge)
   .then(({ data: loginRequest }) =>
     {
-      console.log(data);
       console.log(JSON.stringify(loginRequest,null,2));
       if (loginRequest.skip) {
         // Skip authenticate
