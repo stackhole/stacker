@@ -1,5 +1,8 @@
 name: 07 - Deploy Identity UI
-on: workflow_dispatch
+on:
+  push:
+    paths:
+      - cluster/identity/identity-ui/**
 jobs:
   deploy-identity-ui:
     runs-on: self-hosted
