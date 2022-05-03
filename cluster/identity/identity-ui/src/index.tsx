@@ -23,7 +23,7 @@ const RouteDefinition = (routeDefinition:any) => {
 const routes = [
   {
     page: React.lazy(() => import('./pages/authenticate/AuthenticatePage')) ,
-    route: '/authenticate/:challenge'
+    route: '/authenticate'
   },
   {
     page: React.lazy(() => import( './pages/password/PasswordPage')) ,
