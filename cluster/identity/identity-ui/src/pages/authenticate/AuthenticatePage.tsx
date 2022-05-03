@@ -7,6 +7,7 @@ function AuthenticatePage() {
   const [searchParams] = useSearchParams();
 
   console.log(searchParams);
+  console.log(searchParams.get("login_challenge"));
   return (
     <div>
       <h1>Choose an authentication method</h1>
