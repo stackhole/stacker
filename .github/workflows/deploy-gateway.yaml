@@ -1,5 +1,8 @@
 name: 06 - Deploy Istio Gateway
-on: workflow_dispatch
+on: 
+  push:
+    paths:
+      - cluster/gateway/**
 jobs:
   deploy-gateway:
     runs-on: self-hosted
