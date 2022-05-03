@@ -42,4 +42,4 @@ spec:
             - containerPort: 3000
           env:
             - name: HYDRA_ADMIN_URL
-              value: http://oidc-admin.default.svc.cluster.local:4445/
+              value: http://localhost:4445/
