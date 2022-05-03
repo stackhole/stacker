@@ -1,6 +1,6 @@
 import React from 'react';
 import './AuthenticatePage.css';
-import { Link, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 function AuthenticatePage() {
   
