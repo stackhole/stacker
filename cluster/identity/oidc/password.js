@@ -2,7 +2,14 @@ import express from 'express'
 import hydraAdmin from './config.js'
 
 // Sets up csrf protection
-const router = express.Router()
+const router = express.Router();
+
+function validatePassword(body){
+  return  {
+    // Subject is an alias for user ID. A subject can be a random string, a UUID, an email address, ....
+    subject: 'foo@bar.com'
+  }
+}
 
 router.post('/password',  (req, res, next) => {
   hydraAdmin
