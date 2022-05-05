@@ -4,6 +4,20 @@ import hydraAdmin from './config.js'
 // Sets up csrf protection
 const router = express.Router();
 
+function oidcConformityMaybeFakeAcr(request, fallback) {
+  if (process.env.CONFORMITY_FAKE_CLAIMS !== '1') {
+    return fallback
+  }
+
+  return request.oidc_context?.acr_values &&
+    request.oidc_context.acr_values.length > 0
+    ? request.oidc_context.acr_values[
+        request.oidc_context.acr_values.length - 1
+      ]
+    : fallback
+}
+
+
 function validatePassword(body){
   return  {
     // Subject is an alias for user ID. A subject can be a random string, a UUID, an email address, ....
@@ -65,5 +79,7 @@ router.post('/password',  (req, res, next) => {
   // This will handle any error that happens when making HTTP calls to hydra
   .catch(next)
 })
+
+
 
 export default router;
