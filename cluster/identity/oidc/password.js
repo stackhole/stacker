@@ -21,7 +21,7 @@ function oidcConformityMaybeFakeAcr(request, fallback) {
 function validatePassword(body){
   return  {
     // Subject is an alias for user ID. A subject can be a random string, a UUID, an email address, ....
-    subject: req.body.user || 'foo@bar.com'
+    subject: body.user || 'foo@bar.com'
   }
 }
 
