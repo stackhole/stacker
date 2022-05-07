@@ -21,11 +21,12 @@ function oidcConformityMaybeFakeAcr(request, fallback) {
 function validatePassword(body){
   return  {
     // Subject is an alias for user ID. A subject can be a random string, a UUID, an email address, ....
-    subject: 'foo@bar.com'
+    subject: req.body.user || 'foo@bar.com'
   }
 }
 
 router.post('/password',  (req, res, next) => {
+  const { challenge } = req.body;
   hydraAdmin
   .getLoginRequest(req.body.challenge)
   .then(({ data: loginRequest }) =>

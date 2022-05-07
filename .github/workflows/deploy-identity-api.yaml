@@ -13,3 +13,4 @@ jobs:
           docker build . -t localhost:32000/oidc:latest
           docker push localhost:32000/oidc:latest
           kubectl apply -k kustomize
+          kubectl delete pod -l app=oidc-postgres
