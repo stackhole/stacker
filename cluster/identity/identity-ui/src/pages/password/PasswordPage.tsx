@@ -6,7 +6,7 @@ import './PasswordPage.css';
 
 
 function App() {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   let { challenge } = useParams();
 
   return (
@@ -19,7 +19,7 @@ function App() {
             challenge
           });
           console.log(result.data);
-          navigate("/success");
+          //navigate("/success");
         }
         catch(error){
           console.log(error);
