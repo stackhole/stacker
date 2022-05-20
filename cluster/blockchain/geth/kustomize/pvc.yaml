@@ -1,0 +1,11 @@
+kind: PersistentVolumeClaim 
+apiVersion: v1
+metadata:
+  name: geth-claim
+spec:
+  storageClassName: geth-hostpath
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3500G

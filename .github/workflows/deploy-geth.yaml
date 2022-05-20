@@ -1,0 +1,11 @@
+name: 11 - Deploy geth
+on: workflow_dispatch
+jobs:
+  deploy-geth:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          cd cluster/blockchain/geth
+          kubectl apply -k kustomize
+          
