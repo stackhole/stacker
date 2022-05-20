@@ -21,4 +21,4 @@ spec:
       name: ethhttp
       port: 8545
       targetPort: 8545
-      nodePort: 38545
+      nodePort: 31545
