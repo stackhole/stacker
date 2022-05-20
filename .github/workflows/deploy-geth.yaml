@@ -6,7 +6,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          docker pull ethereum/go-client
           cd cluster/blockchain/geth
           kubectl apply -k kustomize
           
