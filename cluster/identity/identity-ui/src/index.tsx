@@ -41,6 +41,7 @@ root.render(
       <Routes>
         {routes}
       </Routes>
+      test2
     </Router>
   </React.StrictMode>
 );
