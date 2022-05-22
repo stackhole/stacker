@@ -59,7 +59,7 @@ router.post('/default',  (req, res, next) => {
           //   session.id_token.given_name = 'John'
           // }
           const remember = true;
-          const remember_for = 3600;l
+          const remember_for = 3600;
           // Let's fetch the consent request again to be able to set `grantAccessTokenAudience` properly.
           hydraAdmin
             .getConsentRequest(consent_challenge)
