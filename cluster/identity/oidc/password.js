@@ -69,7 +69,7 @@ router.post('/password',  (req, res, next) => {
           res.redirect(String(loginRequest.redirect_to))
         })
         .catch(next);
-      }
+      } 
       else{
         console.log("user not found!");
         res.status(500).json({error:"user not found!"});
