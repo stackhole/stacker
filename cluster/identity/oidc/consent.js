@@ -11,10 +11,10 @@ router.post('/default',  (req, res, next) => {
     return
   }
   hydraAdmin
-  .getLoginRequest(req.body.challenge)
+  .getConsentRequest(consent_challenge)
   .then(({ data: consentRequest }) =>
     {
-      console.log(JSON.stringify(loginRequest,null,2));
+      console.log(JSON.stringify(consentRequest,null,2));
       if (consentRequest.skip) {
         // Skip authenticate
         return hydraAdmin
