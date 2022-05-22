@@ -31,7 +31,7 @@ const routes = [
   },
   {
     page: React.lazy(() => import( './pages/consent/ConsentPage')) ,
-    route: '/consent/:consent_challenge'
+    route: '/consent'
   },
   {
     page: React.lazy(() => import( './App')) ,

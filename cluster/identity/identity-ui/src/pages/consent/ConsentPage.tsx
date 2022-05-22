@@ -1,12 +1,13 @@
 import { Button } from '@mui/material';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import './ConsentPage.css';
 
 
 function App() {
   //const navigate = useNavigate();
-  let { consent_challenge } = useParams();
+  let [searchParams] = useSearchParams();
+  let consent_challenge = searchParams.get("consent_challenge");
   console.log(consent_challenge);
   return (
     <div>
