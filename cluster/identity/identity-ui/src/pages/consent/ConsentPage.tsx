@@ -10,11 +10,9 @@ function App() {
   console.log(consent_challenge);
   return (
     <div>
-      <TextField id="username" label="Username" variant="standard" />
-      <TextField id="Consent" label="Consent" type="Consent" variant="standard" />
       <Button onClick={async () => {
         try{
-          const result = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/oidc/consent`, {
+          const result = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/consent/default`, {
             consent_challenge
           });
           console.log(result);
@@ -25,7 +23,7 @@ function App() {
           console.log(consent_challenge);
         }
       }}>
-        Login
+        Consent?
       </Button>
     </div>
   );

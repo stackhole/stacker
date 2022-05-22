@@ -1,6 +1,7 @@
 // This example uses ExpressJS
 import express from 'express'
 import login from './password.js'
+import consent from './consent.js'
 import ping from './ping.js'
 import cors from 'cors'
 
@@ -15,6 +16,7 @@ app.use(express.urlencoded({
 }));
 app.use('/login', login);
 app.use('/ping', ping);
+app.use('/consent', consent);
 
 
 app.listen(port, () => {
