@@ -1,12 +1,12 @@
 import { Button, TextField } from '@mui/material';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import './PasswordPage.css';
 
 
 
 function App() {
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
   let { challenge } = useParams();
 
   return (
@@ -19,7 +19,9 @@ function App() {
             challenge
           });
           console.log(result.data);
-          //navigate("/success");
+          console.log(result);
+          console.log(result.headers);
+          navigate(result.headers[":path"]);
         }
         catch(error){
           console.log(error);
