@@ -30,6 +30,10 @@ const routes = [
     route: '/password/:challenge'
   },
   {
+    page: React.lazy(() => import( './pages/consent/ConsentPage')) ,
+    route: '/consent/:consent_challenge'
+  },
+  {
     page: React.lazy(() => import( './App')) ,
     route: '/success'
   },

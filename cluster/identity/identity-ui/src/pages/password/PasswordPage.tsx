@@ -18,10 +18,13 @@ function App() {
           const result = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/login/password`, {
             challenge
           });
-          console.log(result.data);
+          if(result.request.responseURL.lastIndexOf('/consent') == -1)
+          {
+            throw Error("Redirect does not match consent page");
+          }
+          navigate(result.request.responseURL);
+          console.log(result.request);
           console.log(result);
-          console.log(result.headers);
-          navigate(result.headers[":path"]);
         }
         catch(error){
           console.log(error);
