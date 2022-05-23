@@ -13,6 +13,20 @@ function App() {
     <div>
       <Button onClick={async () => {
         try{
+          axios.interceptors.response.use((response) => {
+            return response
+          }, (error) => {
+            if (error.response && error.response.data && error.response.data.location) {
+              console.log("yay");
+              window.location = error.response.data.location
+            } else {
+              console.log("false");
+              return Promise.reject(error)
+            }
+            console.log(error);
+            console.log(error.response.data);
+            console.log(error.response.headers);
+          })
           const result = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/consent/default`, {
             consent_challenge
           });
@@ -30,7 +44,7 @@ function App() {
         Consent?
       </Button>
     </div>
-  );
+  );z1
 }
 
 export default App;
