@@ -75,7 +75,8 @@ router.post('/default',  (req, res, next) => {
                 })
                 .then(({ data: body }) => {
                   // All we need to do now is to redirect the user back to hydra!
-                  res.redirect(String(body.redirect_to))
+                  const { redirect_to } = body
+                  res.status(200).json({redirect_to});
                 })
             })
             .catch(next)

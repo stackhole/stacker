@@ -13,26 +13,12 @@ function App() {
     <div>
       <Button onClick={async () => {
         try{
-          axios.interceptors.response.use((response) => {
-            return response
-          }, (error) => {
-            if (error.response && error.response.data && error.response.data.location) {
-              console.log("yay");
-              window.location = error.response.data.location
-            } else {
-              console.log("false");
-              return Promise.reject(error)
-            }
-            console.log(error);
-            console.log(error.response.data);
-            console.log(error.response.headers);
-          })
           const result = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/consent/default`, {
             consent_challenge
           });
-          const { responseURL } = result.request;
-          console.log(responseURL);
-          window.location = responseURL;
+          const { redirect_to } = result.request.data;
+          console.log(redirect_to);
+          window.location = redirect_to;
           
           //navigate("/success");
         }
