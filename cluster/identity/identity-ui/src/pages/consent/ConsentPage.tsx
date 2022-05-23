@@ -16,7 +16,10 @@ function App() {
           const result = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/consent/default`, {
             consent_challenge
           });
-          console.log(result);
+          const { responseURL } = result.request;
+          console.log(responseURL);
+          window.location = responseURL;
+          
           //navigate("/success");
         }
         catch(error){
