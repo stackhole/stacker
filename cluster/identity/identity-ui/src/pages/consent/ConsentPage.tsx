@@ -17,7 +17,7 @@ function App() {
             consent_challenge
           });
           console.log(result);
-          window.location = result.redirect_to;
+          window.location = result.data.redirect_to;
           
           //navigate("/success");
         }
