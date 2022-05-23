@@ -16,9 +16,8 @@ function App() {
           const result = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/consent/default`, {
             consent_challenge
           });
-          const { redirect_to } = result.request.data;
-          console.log(redirect_to);
-          window.location = redirect_to;
+          console.log(result);
+          window.location = result.redirect_to;
           
           //navigate("/success");
         }
