@@ -44,7 +44,7 @@ function App() {
         Consent?
       </Button>
     </div>
-  );z1
+  );
 }
 
 export default App;
