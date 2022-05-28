@@ -7,7 +7,7 @@ import './ConsentPage.css';
 function App() {
   //const navigate = useNavigate();
   let [searchParams] = useSearchParams();
-  let consent_challenge = searchParams.get("consent_challenge");
+  const consent_challenge = searchParams.get("consent_challenge");
   console.log(consent_challenge);
   return (
     <div>

@@ -1,5 +1,6 @@
-import { RedirectRequestHandler, LocalStorageBackend, BasicQueryStringUtils, DefaultCrypto, AuthorizationServiceConfiguration, FetchRequestor, AuthorizationRequest } from '@openid/appauth';
+import { RedirectRequestHandler, LocalStorageBackend, DefaultCrypto, AuthorizationServiceConfiguration, FetchRequestor, AuthorizationRequest } from '@openid/appauth';
 import { useParams } from 'react-router-dom';
+import { NoHashQueryStringUtils } from '../../noHashQueryStringUtils';
 import './UserPage.css';
 
 
@@ -8,7 +9,7 @@ import './UserPage.css';
 function App() {
   let { id } = useParams();
   let login = () => {
-    const authorizationHandler = new RedirectRequestHandler(new LocalStorageBackend(), new BasicQueryStringUtils(), window.location, new DefaultCrypto());
+    const authorizationHandler = new RedirectRequestHandler(new LocalStorageBackend(), new NoHashQueryStringUtils(), window.location, new DefaultCrypto());
     AuthorizationServiceConfiguration.fetchFromIssuer(process.env.REACT_APP_ISSUER || '', new FetchRequestor())
       .then((response) => {
         const authRequest = new AuthorizationRequest({
@@ -17,7 +18,6 @@ function App() {
           scope: process.env.REACT_APP_API_SCOPE || '',
           response_type: AuthorizationRequest.RESPONSE_TYPE_CODE,
           state: undefined,
-          // extras: environment.extra
         });
         authorizationHandler.performAuthorizationRequest(response, authRequest);
       })

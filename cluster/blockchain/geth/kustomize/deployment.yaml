@@ -16,10 +16,10 @@ spec:
           resources:
             requests:
               memory: "16G"
-              cpu: "4000m"
+              cpu: "500m"
             limits:
-              memory: "128G"
-              cpu: "8000m"
+              memory: "32G"
+              cpu: "2000m"
           image: ethereum/client-go
           command: ["geth"]
           args: [ "--http", "--http.addr=0.0.0.0", "--http.vhosts=geth-mainnet-full", "--http.api=eth,net,web3,txpool", "--ws", "--ws.addr=0.0.0.0", "--datadir=/data"]
