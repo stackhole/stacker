@@ -1,5 +1,5 @@
 # stacker
-Sandbox for cloud native bootstraps, project starters, automation, and creativity.
+Sandbox for cloud native bootstraps, project starters, automation, and creativity. Not meant for human consumption. Use at your own risk.
 ## Overview
 ## Installation
 ### Providers
