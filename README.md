@@ -2,6 +2,7 @@
 Sandbox for cloud native bootstraps, project starters, automation, and creativity. Not meant for human consumption. Use at your own risk.
 ## Overview
 ## Installation
+Ideally, the code and github actions are self-documenting. Since this repository is not meant for human consumption, do not assume any of this code works. 
 ### Providers
 [Providers](providers) directory contains setup scripts for baseline infrastructure. Bare metal, virtual machine, and cloud provider provisioning of compute and storage resources for a [Kubernetes](https://kubernetes.io/) cluster
 #### Metal
