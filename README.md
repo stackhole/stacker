@@ -22,4 +22,6 @@ This section contains sample [Kustomize](https://kustomize.io/) manifests for en
 - Caching is provided by Redis
 - Setup of a persistent Postgres database with an OpenEBS volume is demonstrated
 - Setup of an Ethereum mainnet [geth](https://geth.ethereum.org/) node with an OpenEBS storage volume is demonstrated in [cluster/blockchain](cluster/blockchain)
+- Example bootstraps for simple CRUD REST API (NodeJS) and gRPC (NodeJS, Go) microservices coupled with a persistent databasae and [Debezium](https://debezium.io/) for providing database events to Kafka.
+- ReactJS static single page Web Applications served from Minio via Istio.
 - [Work In Progress] Identity is provided by a probably insecure custom OAuth2 identity provider based on [Hydra](https://www.ory.sh/docs/hydra). Meant to demonstrate basic user management over multiple, linkable authentication methods including web3, FIDO2, Secure Remote Passwword, and email verification link. 
