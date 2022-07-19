@@ -15,23 +15,18 @@ const Callback = (props: any) => {
 
     let [searchParams] = useSearchParams();
     const code = searchParams.get("code") || '';
+    const state = searchParams.get("state") || '';
     const [error, setError] = useState(null);
     const navigate = useNavigate();
     const authorizationHandler = new RedirectRequestHandler(new LocalStorageBackend(), new NoHashQueryStringUtils(), window.location, new DefaultCrypto());
     const notifier = new AuthorizationNotifier();
     authorizationHandler.setAuthorizationNotifier(notifier);
-    console.log("here");
     notifier.setAuthorizationListener((request, response, error) => {
-        console.log('Authorization request complete ', request, response, error);
-        console.log("complete");
         if (response) {
-            console.log(`Authorization Code  ${response.code}`);
-
             let extras = {code_verifier: ''};
             if (request && request.internal) {
                 extras.code_verifier = request.internal.code_verifier;
             }
-            console.log(extras);
             const tokenRequest = new TokenRequest({
                 client_id: process.env.REACT_APP_CLIENT_ID || '',
                 redirect_uri: process.env.REACT_APP_REDIRECT_URI || '',
@@ -40,7 +35,6 @@ const Callback = (props: any) => {
                 refresh_token: undefined,
                 extras
             });
-            console.log(tokenRequest);
 
             const tokenHandler = new BaseTokenRequestHandler(new FetchRequestor());
             AuthorizationServiceConfiguration.fetchFromIssuer(process.env.REACT_APP_ISSUER || '', new FetchRequestor())
@@ -51,7 +45,19 @@ const Callback = (props: any) => {
                 .then((oResponse) => {
                     localStorage.setItem('access_token', oResponse.accessToken);
                     console.log(oResponse.accessToken);
-                    //navigate("/view/user/me");
+                    const redir:string = Buffer.from(state, 'base64').toString('ascii');
+                    if(redir.indexOf('http')===0){
+                        console.log(redir);
+                        window.location = redir as ((string | Location) & Location);
+                    }
+                    else{
+                        //navigate("/view/user/me");
+                    }
+
+                    ///console.log(Buffer.from("Hello World").toString('base64'));
+//console.log(Buffer.from("SGVsbG8gV29ybGQ=", 'base64').toString('ascii'));
+                    
+                   // buf.toString('base64')
                 })
                 .catch(oError => {
                     setError(oError);

@@ -17,7 +17,7 @@ function App() {
           redirect_uri: process.env.REACT_APP_REDIRECT_URI || '',
           scope: process.env.REACT_APP_API_SCOPE || '',
           response_type: AuthorizationRequest.RESPONSE_TYPE_CODE,
-          state: undefined,
+          state: window.location.toString(),
         });
         authorizationHandler.performAuthorizationRequest(response, authRequest);
       })
