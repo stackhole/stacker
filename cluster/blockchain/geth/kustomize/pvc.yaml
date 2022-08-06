@@ -3,9 +3,9 @@ apiVersion: v1
 metadata:
   name: geth-claim
 spec:
-  storageClassName: geth-hostpath
+  storageClassName: sdd-hostpath
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 3500G
+      storage: 1300G

@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: curd-postgresql
+  name: user-postgresql
   labels:
-    app: curd-postgresql
+    app: user-postgresql
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: curd-postgresql
+        app: user-postgresql
     spec:
       containers:
         - name: postgresql
@@ -24,11 +24,11 @@ spec:
             - name: PGDATA
               value: /var/lib/postgresql/data/pgdata
             - name: POSTGRES_DB
-              value: curd
+              value: user
           volumeMounts:
           - mountPath: /var/lib/postgresql/data
-            name: curd-postgres-volume
+            name: user-postgres-volume
       volumes:
-        - name: curd-postgres-volume
+        - name: user-postgres-volume
           persistentVolumeClaim:
-            claimName: curd-postgres-claim
+            claimName: user-postgres-claim

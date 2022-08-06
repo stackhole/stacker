@@ -11,13 +11,16 @@ sudo chown -f -R ubuntu ~/.kube
 newgrp microk8s
 microk8s status --wait-ready
 mkdir -p ~/.kube
-microk8s config > ~/.kube/config
 
 curl https://get.docker.com | sh -
 usermod -aG docker ubuntu
 newgrp docker
 
-microk8s enable dns registry
+mkdir /k8s
+microk8s config > ~/.kube/config
+
+microk8s enable community
+microk8s enable dns
+microk8s enable registry
 microk8s enable metallb:192.168.1.70/32
 microk8s enable openebs
-microk8s enable dashboard

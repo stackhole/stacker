@@ -20,8 +20,8 @@ RUN chown actions-runner /actions-runner
 USER actions-runner
 
 # Download the latest runner package
-RUN curl -o actions-runner-linux-x64-2.289.2.tar.gz -L https://github.com/actions/runner/releases/download/v2.289.2/actions-runner-linux-x64-2.289.2.tar.gz
-RUN tar xzf ./actions-runner-linux-x64-2.289.2.tar.gz
+RUN curl -o actions-runner-linux-x64-2.294.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.294.0/actions-runner-linux-x64-2.294.0.tar.gz
+RUN tar xzf ./actions-runner-linux-x64-2.294.0.tar.gz
 USER root
 # Install dependency
 RUN ./bin/installdependencies.sh
@@ -31,6 +31,6 @@ USER actions-runner
 RUN ls -la /actions-runner
 
 # Run the config script
-RUN ./config.sh --url https://github.com/stackbook/stacker --token ABWBMWLVD5SWL7YXBT4PMCTCJZOK6
+RUN ./config.sh --url https://github.com/stackhole/stacker --token ABWBMWML6IKWIRO7ODPPBLDC5SVN4
 
 CMD ["/bin/bash", "/actions-runner/runLoop.sh"]

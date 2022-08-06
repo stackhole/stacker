@@ -1,5 +1,6 @@
 name: 07 - Deploy Identity UI
 on:
+  workflow_dispatch:
   push:
     paths:
       - cluster/identity/identity-ui/**

@@ -1,9 +1,9 @@
 kind: PersistentVolumeClaim 
 apiVersion: v1
 metadata:
-  name: curd-postgres-claim
+  name: user-postgres-claim
 spec:
-  storageClassName: openebs-hostpath
+  storageClassName: sdd-hostpath
   accessModes:
     - ReadWriteOnce
   resources:

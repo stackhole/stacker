@@ -1,0 +1,13 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+metadata:
+  name: user
+build:
+  artifacts:
+  - image: localhost:32000/user
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kustomize:
+    paths:
+    - kustomize

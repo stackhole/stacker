@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: curd-service
+  name: user-service
 spec:
   selector:
-    app: curd
+    app: user
   ports:
     - protocol: TCP
       port: 80

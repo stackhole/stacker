@@ -1,18 +1,18 @@
 {
-  "name": "curd",
+  "name": "user",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "prebuild": "eslint .",
     "build": "tsc",
-    "build-image": "docker build -t localhost:32000/curd .",
     "prestart": "npm run build",
     "start": "ts-node .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pulldocker": "docker pull postgres:14-alpine",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
     "docker": "docker run -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres:14-alpine",
+    "dockerbuild": "npm ci && npm run build && docker build -t localhost:32000/user .",
     "db:migrate": "npm run typeorm migration:run -- --dataSource src/data-source.ts",
     "db:create-migration": "npm run typeorm migration:create src/migration/migration",
     "db:generate-migration": "npm run typeorm migration:generate src/migration/migration -- --dataSource src/data-source.ts"

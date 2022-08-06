@@ -9,4 +9,3 @@ resources:
 - api-service.yaml
 - web-service.yaml
 - identity-service.yaml
-- spinnaker-service.yaml
