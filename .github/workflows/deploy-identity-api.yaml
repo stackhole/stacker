@@ -1,5 +1,6 @@
 name: 09 - Deploy Identity API
 on:
+  workflow_dispatch:
   push:
     paths:
       - cluster/identity/oidc/**

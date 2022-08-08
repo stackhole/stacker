@@ -1,5 +1,6 @@
 name: 06 - Deploy Istio Gateway
 on: 
+  workflow_dispatch:
   push:
     paths:
       - cluster/gateway/**
