@@ -8,5 +8,5 @@ for f in $(find . -type f);
 do sed -i -e "s/curd/${REPOSITORY_NAME}/g" $f && sed -i -e "s/Curd/${UPPER_REPOSITORY_NAME}/g" $f;
 done
 
-
-mv "$"
+mv "src/controller/CurdConteroller.ts" "src/controller/${UPPER_REPOSITORY_NAME}Controller.ts" 
+mv "src/entity/Curd.ts" "src/controller/${UPPER_REPOSITORY_NAME}.ts" 
