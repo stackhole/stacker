@@ -1,1 +1,0 @@
-sh 00-build-base.sh && sh 01-build.sh && sh 02-build.sh && sh 03-deploy.sh

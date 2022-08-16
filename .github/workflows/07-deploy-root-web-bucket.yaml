@@ -1,0 +1,27 @@
+name: 05 - Create Web Bucket
+on:
+  workflow_dispatch:
+    inputs:
+      bucketName:
+        type: string
+        default: static
+        required: true
+      accessKeyId:
+        type: string
+        default: CHANGE_ME
+        required: true
+      secretAccessKey:
+        type: string
+        default: CHANGE_ME
+        required: true
+jobs:
+  create-web-bucket:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          cd cluster/07-root-web
+          bash deploy.sh
+        env:
+          ACCESS_KEY_ID: ${{ github.event.inputs.accessKeyId }}
+          SECRET_ACCESS_KEY: ${{ github.event.inputs.secretAccessKey }}

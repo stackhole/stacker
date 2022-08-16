@@ -1,0 +1,11 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+metadata:
+  name: ubuntu-builder
+build:
+  tagPolicy:
+    sha256: {}
+  artifacts:
+  - image: localhost:32000/ubuntu-builder
+    docker:
+      dockerfile: Dockerfile

@@ -1,0 +1,13 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+metadata:
+  name: root-web
+build:
+  artifacts:
+  - image: localhost:32000/root-web
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kustomize:
+    paths:
+    - kustomize

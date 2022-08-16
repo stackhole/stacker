@@ -1,1 +1,0 @@
-docker build -f Dockerfile-base . -t ubuntu-base:latest

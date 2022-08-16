@@ -1,0 +1,14 @@
+name: 05 - Deploy Database Gateway
+on: 
+  workflow_dispatch:
+  push:
+    paths:
+      - cluster/05-database-gateway/**
+jobs:
+  deploy-gateway:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          cd cluster/05-database-gateway
+          bash deploy.sh

@@ -1,0 +1,14 @@
+name: Curd Service Deploy
+on:
+  workflow_dispatch:
+    inputs:
+      namespace:
+        type: string
+        default: default
+jobs:
+  build-service:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          bash deploy.sh

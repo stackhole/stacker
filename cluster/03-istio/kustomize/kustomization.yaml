@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+metadata:
+  name: istio-deploy
+commonLabels:
+  app: istio-deploy
+secretGenerator:
+  - name: istio-deploy
+    envs:
+    - .env.secret
+resources:
+  - job.yaml

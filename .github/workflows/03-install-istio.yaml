@@ -1,0 +1,19 @@
+name: 03 - Install Istio
+on:
+  workflow_dispatch:
+    inputs:
+      istioVersion:
+        type: string
+        default: 1.14.2
+        required: true
+jobs:
+  deploy-istio:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          cd cluster/03-istio
+          bash deploy.sh
+          
+        env:
+          ISTIO_VERSION: ${{ github.event.inputs.istioVersion }}

@@ -1,0 +1,14 @@
+name: 04 - Deploy HTTP Gateway
+on: 
+  workflow_dispatch:
+  push:
+    paths:
+      - cluster/04-http-gateway/**
+jobs:
+  deploy-gateway:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          cd cluster/04-http-gateway
+          bash deploy.sh

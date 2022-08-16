@@ -1,0 +1,15 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+metadata:
+  name: curd
+build:
+  tagPolicy:
+    sha256: {}
+  artifacts:
+  - image: localhost:32000/curd
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kustomize:
+    paths:
+    - kustomize

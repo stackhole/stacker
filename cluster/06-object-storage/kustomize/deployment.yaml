@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minio
+  labels:
+    app: minio
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: minio
+    spec:
+      containers:
+        - name: minio
+          image: minio/minio
+          args: ["server", "/data", "--console-address", ":9001"]
+          ports:
+            - containerPort: 9000
+            - containerPort: 9001
+          env:
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: object-storage
+                  key: ACCESS_KEY_ID
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: object-storage
+                  key: SECRET_ACCESS_KEY
+          volumeMounts:
+          - mountPath: /data
+            name: minio-volume
+      volumes:
+        - name: minio-volume
+          persistentVolumeClaim:
+            claimName: minio-claim

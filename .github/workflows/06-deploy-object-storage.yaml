@@ -1,0 +1,13 @@
+name: 06 - Deploy Minio
+  workflow_dispatch:
+  push:
+    paths:
+      - cluster/06-object-storage/**
+jobs:
+  deploy-minio:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          cd cluster/06-object-storage
+          bash deploy.sh
