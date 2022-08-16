@@ -1,4 +1,4 @@
-name: Curd Service Deploy
+name: Service Deploy
 on:
   workflow_dispatch:
     inputs:
