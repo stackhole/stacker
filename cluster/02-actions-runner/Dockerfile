@@ -14,6 +14,8 @@ WORKDIR /actions-runner
 
 # Transfer ownership to the new user
 RUN chown actions-runner /actions-runner
+# Transfer ownership to the new user
+RUN chown actions-runner /home/actions-runner
 
 # Switch to new user
 USER actions-runner

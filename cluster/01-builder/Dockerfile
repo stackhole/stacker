@@ -28,8 +28,8 @@ RUN chmod a+rx ./mc
 ENV PATH=$PATH:$WORK_DIR
 
 RUN curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
-RUN install ./skaffold /usr/local/bin/
-
+RUN chmod a+x skaffold
+RUN cp skaffold /usr/local/bin/
 
 # Make a new user
 RUN useradd actions-runner
