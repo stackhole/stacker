@@ -4,9 +4,8 @@ metadata:
   name: istio-deploy
 commonLabels:
   app: istio-deploy
-secretGenerator:
-  - name: istio-deploy
-    envs:
-    - .env.secret
 resources:
   - job.yaml
+  - role.yaml
+  - role-binding.yaml
+  - deployment.yaml
