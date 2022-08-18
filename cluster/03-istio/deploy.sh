@@ -1,5 +1,5 @@
 #!/bin/sh
 if [ -n "$GITHUB_REPOSITORY" ]; then
-    bash deploy.sh 
-fi 
+    bash registry-config.sh
+fi
 skaffold run
