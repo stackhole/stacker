@@ -19,9 +19,6 @@ RUN apt-get install -y kubectl
 RUN apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 RUN apt-get install -y fuse-overlayfs
 
-RUN mkdir /root/.kube/
-COPY config /root/.kube/config
-
 RUN curl -L https://istio.io/downloadIstio | ISTIO_VERSION=$ISTIO_VERSION TARGET_ARCH=x86_64 sh -
 RUN export WORK_DIR=$(pwd)
 ENV PATH=$PATH:$WORK_DIR/istio-$ISTIO_VERSION/bin
@@ -30,7 +27,9 @@ RUN curl https://dl.min.io/client/mc/release/linux-amd64/mc -o ./mc
 RUN chmod a+rx ./mc
 ENV PATH=$PATH:$WORK_DIR
 
-RUN curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && install skaffold /usr/local/bin/
+RUN curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+RUN install ./skaffold /usr/local/bin/
+
 
 # Make a new user
 RUN useradd actions-runner

@@ -9,6 +9,10 @@ build:
   - image: localhost:32000/actions-runner
     docker:
       dockerfile: Dockerfile
+      buildArgs: 
+        RUNNER_VERSION: "2.295.0"
+        URL: https://github.com/stackhole
+        ACTIONS_TOKEN: ABWBMWJ23EED55XDD5L2AMTC7W52Q
 deploy:
   kustomize:
     paths:

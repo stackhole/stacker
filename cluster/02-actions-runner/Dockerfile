@@ -1,14 +1,11 @@
 FROM localhost:32000/ubuntu-builder:latest
 
-ARG RUNNER_VERSION=2.295.0
-ARG ACTIONS_TOKEN=token
+ARG RUNNER_VERSION
+ARG ACTIONS_TOKEN
+ARG URL
 
 
 RUN mkdir /home/actions-runner/
-RUN mkdir /home/actions-runner/.kube/
-RUN cp /root/.kube/config /home/actions-runner/.kube/config
-RUN chmod a+rw /home/actions-runner/.kube/config
-
 # Create a folder
 RUN mkdir /actions-runner
 
@@ -25,6 +22,7 @@ USER actions-runner
 RUN curl -o actions-runner-linux-x64-$RUNNER_VERSION.tar.gz -L https://github.com/actions/runner/releases/download/v$RUNNER_VERSION/actions-runner-linux-x64-$RUNNER_VERSION.tar.gz
 RUN tar xzf ./actions-runner-linux-x64-$RUNNER_VERSION.tar.gz
 USER root
+
 # Install dependency
 RUN ./bin/installdependencies.sh
 COPY runLoop.sh .
@@ -33,6 +31,6 @@ RUN chmod a+x runLoop.sh
 USER actions-runner
 
 # Run the config script
-RUN ./config.sh --url https://github.com/stackhole/stacker --token $ACTIONS_TOKEN
+RUN ./config.sh --url $URL --token $ACTIONS_TOKEN
 
 CMD ["/bin/bash", "/actions-runner/runLoop.sh"]

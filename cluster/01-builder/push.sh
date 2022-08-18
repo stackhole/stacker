@@ -1,1 +1,0 @@
-docker push localhost:32000/ubuntu-builder:latest
