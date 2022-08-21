@@ -4,10 +4,6 @@ metadata:
   name: root-web
 commonLabels:
   app: root-web
-secretGenerator:
-  - name: root-web
-    envs:
-    - .env.secret
 resources:
   - virtual-service.yaml
   - job.yaml
