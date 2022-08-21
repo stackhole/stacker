@@ -1,4 +1,4 @@
-name: 05 - Create Web Bucket
+name: 07 - Deploy Root Web
 on:
   workflow_dispatch:
     inputs:
