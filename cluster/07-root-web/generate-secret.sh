@@ -1,1 +1,0 @@
-printf "ACCESS_KEY_ID=$ACCESS_KEY_ID\nSECRET_ACCESS_KEY=$SECRET_ACCESS_KEY" > kustomize/.env.secret
