@@ -6,4 +6,3 @@ commonLabels:
   app: root-web
 resources:
   - virtual-service.yaml
-  - job.yaml
