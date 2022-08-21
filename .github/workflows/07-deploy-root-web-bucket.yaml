@@ -4,7 +4,7 @@ on:
     inputs:
       bucketName:
         type: string
-        default: static
+        default: root-web
         required: true
       accessKeyId:
         type: string
@@ -23,5 +23,6 @@ jobs:
           cd cluster/07-root-web
           bash deploy.sh
         env:
+          BUCKET_NAME: ${{ github.event.inputs.bucketName }}
           ACCESS_KEY_ID: ${{ github.event.inputs.accessKeyId }}
           SECRET_ACCESS_KEY: ${{ github.event.inputs.secretAccessKey }}
