@@ -1,3 +1,3 @@
 #!/bin/sh
-skaffold run
-docker run localhost:32000/istio-deploy
+docker build -t istio-deploy .
+docker run istio-deploy

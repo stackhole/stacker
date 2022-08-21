@@ -1,9 +1,0 @@
-apiVersion: skaffold/v2beta29
-kind: Config
-metadata:
-  name: istio-deploy
-build:
-  artifacts:
-  - image: localhost:32000/istio-deploy
-    docker:
-      dockerfile: Dockerfile
