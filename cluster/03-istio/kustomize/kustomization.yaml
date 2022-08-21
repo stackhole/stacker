@@ -8,4 +8,4 @@ resources:
   - job.yaml
   - role.yaml
   - role-binding.yaml
-  - deployment.yaml
+  - service-account.yaml
