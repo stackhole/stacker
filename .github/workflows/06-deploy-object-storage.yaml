@@ -1,9 +1,19 @@
 name: 06 - Deploy Minio
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - cluster/06-object-storage/**
+    inputs:
+      bucketName:
+        type: string
+        default: static
+        required: true
+      accessKeyId:
+        type: string
+        default: CHANGE_ME
+        required: true
+      secretAccessKey:
+        type: string
+        default: CHANGE_ME
+        required: true
 jobs:
   deploy-minio:
     runs-on: self-hosted
@@ -12,3 +22,6 @@ jobs:
       - run: |
           cd cluster/06-object-storage
           bash deploy.sh
+        env:
+          ACCESS_KEY_ID: ${{ github.event.inputs.accessKeyId }}
+          SECRET_ACCESS_KEY: ${{ github.event.inputs.secretAccessKey }}
