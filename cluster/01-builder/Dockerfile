@@ -21,6 +21,9 @@ RUN apt-get install -y fuse-overlayfs
 
 RUN curl -L https://istio.io/downloadIstio | ISTIO_VERSION=$ISTIO_VERSION TARGET_ARCH=x86_64 sh -
 RUN export WORK_DIR=$(pwd)
+RUN chmod a+rw $WORK_DIR/istio-$ISTIO_VERSION
+RUN chmod a+rw $WORK_DIR/istio-$ISTIO_VERSION/bin
+RUN chmod a+x $WORK_DIR/istio-$ISTIO_VERSION/bin/istioctl
 ENV PATH=$PATH:$WORK_DIR/istio-$ISTIO_VERSION/bin
 
 RUN curl https://dl.min.io/client/mc/release/linux-amd64/mc -o ./mc
