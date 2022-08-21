@@ -1,3 +1,3 @@
 #!/bin/bash
 bash start.sh
-skaffold run
+kubectl apply -k kustomize
