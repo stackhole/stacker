@@ -5,3 +5,4 @@
 
 
 sed -i -e "s/localhost\:32000/registry.container-registry.svc.cluster.local\:32000/g" skaffold.yaml
+sed -i -e "s/localhost\:32000/registry.container-registry.svc.cluster.local\:32000/g" Dockerfile
