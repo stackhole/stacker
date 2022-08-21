@@ -7,7 +7,3 @@ build:
   - image: localhost:32000/istio-deploy
     docker:
       dockerfile: Dockerfile
-deploy:
-  kustomize:
-    paths:
-    - kustomize
