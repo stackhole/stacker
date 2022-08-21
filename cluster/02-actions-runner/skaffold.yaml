@@ -12,7 +12,7 @@ build:
       buildArgs: 
         RUNNER_VERSION: "2.295.0"
         URL: https://github.com/stackhole
-        ACTIONS_TOKEN: ABWBMWLY3LEDU7JB2SXVUMDC7XC7Y
+        ACTIONS_TOKEN: ABWBMWLVK3KIXDMWQMZZQADDAHDUG
 deploy:
   kustomize:
     paths:

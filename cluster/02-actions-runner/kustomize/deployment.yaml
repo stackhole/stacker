@@ -18,7 +18,7 @@ spec:
           path: /var/run
       serviceAccountName: internal-kubectl
       containers:
-        - image: localhost:32000/actions-runner:latest
+        - image: localhost:32000/actions-runner
           imagePullPolicy: Always
           name: actions-runner
           volumeMounts:

@@ -1,4 +1,4 @@
-FROM localhost:32000/ubuntu-builder:latest
+FROM localhost:32000/ubuntu-builder
 
 ARG RUNNER_VERSION
 ARG ACTIONS_TOKEN

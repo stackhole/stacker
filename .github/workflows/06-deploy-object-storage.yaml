@@ -1,4 +1,5 @@
 name: 06 - Deploy Minio
+on:
   workflow_dispatch:
   push:
     paths:
