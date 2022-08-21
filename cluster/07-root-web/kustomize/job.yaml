@@ -13,14 +13,8 @@ spec:
           - name: BUCKET_NAME
             value: root-web
           - name: ACCESS_KEY_ID
-            valueFrom:
-              secretKeyRef:
-                name: root-web
-                key: ACCESS_KEY_ID
+            value: CHANGE_ME11
           - name: SECRET_ACCESS_KEY
-            valueFrom:
-              secretKeyRef:
-                name: root-web
-                key: SECRET_ACCESS_KEY
+            value: CHANGE_ME11
       restartPolicy: Never
   backoffLimit: 1
