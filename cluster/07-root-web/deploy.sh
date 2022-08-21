@@ -1,3 +1,2 @@
 #!/bin/bash
-bash generate-secret.sh
-skaffold run
+bash start.sh
