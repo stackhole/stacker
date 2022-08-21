@@ -21,7 +21,7 @@ RUN apt-get install -y fuse-overlayfs
 
 RUN curl https://dl.min.io/client/mc/release/linux-amd64/mc -o ./mc
 RUN chmod a+rx ./mc
-ENV PATH=$PATH:$WORK_DIR
+ENV PATH=$PATH:/
 
 RUN curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
 RUN chmod a+x skaffold
