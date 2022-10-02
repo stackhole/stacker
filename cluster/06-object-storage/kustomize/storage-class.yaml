@@ -11,4 +11,4 @@ metadata:
         value: /k8s
 provisioner: openebs.io/local
 reclaimPolicy: Retain
-volumeBindingMode: Immediate
+volumeBindingMode: WaitForFirstConsumer

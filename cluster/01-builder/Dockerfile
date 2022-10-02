@@ -1,8 +1,8 @@
 FROM ubuntu:22.04
 
 ARG NODE_VERSION=18
-ARG ISTIO_VERSION=1.14.3
-ARG CAMEL_K_VERSION=1.9.2
+ARG ISTIO_VERSION=1.15.1
+ARG CAMEL_K_VERSION=1.10.0
 RUN apt-get update -y
 RUN apt-get upgrade -y 
 RUN apt-get install -y apt-transport-https ca-certificates curl git apt-utils gnupg lsb-release
