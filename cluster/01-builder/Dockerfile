@@ -2,6 +2,7 @@ FROM ubuntu:22.04
 
 ARG NODE_VERSION=18
 ARG ISTIO_VERSION=1.14.3
+ARG CAMEL_K_VERSION=1.9.2
 RUN apt-get update -y
 RUN apt-get upgrade -y 
 RUN apt-get install -y apt-transport-https ca-certificates curl git apt-utils gnupg lsb-release
@@ -38,9 +39,15 @@ USER actions-runner
 
 WORKDIR /istio
 RUN curl -L https://istio.io/downloadIstio | ISTIO_VERSION=$ISTIO_VERSION TARGET_ARCH=x86_64 sh -
-RUN chmod a+x /istio/istio-$ISTIO_VERSION/bin/istioctl
+RUN chmod a+rx /istio/istio-$ISTIO_VERSION/bin/istioctl
 
 USER root
 
 WORKDIR /
 ENV PATH=$PATH:/istio/istio-$ISTIO_VERSION/bin
+
+RUN curl -Ls https://sh.jbang.dev | bash -s - trust add https://repo1.maven.org/maven2/io/quarkus/quarkus-cli/
+RUN curl -Ls https://sh.jbang.dev | bash -s - app install --fresh --force quarkus@quarkusio
+
+RUN curl -Ls https://github.com/apache/camel-k/releases/download/v$CAMEL_K_VERSION/camel-k-client-$CAMEL_K_VERSION-linux-64bit.tar.gz | tar xzfv -
+RUN chmod a+rx /kamel
