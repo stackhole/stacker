@@ -19,16 +19,10 @@ spec:
             - containerPort: 9000
             - containerPort: 9001
           env:
-            - name: MINIO_ACCESS_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: object-storage
-                  key: ACCESS_KEY_ID
-            - name: MINIO_SECRET_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: object-storage
-                  key: SECRET_ACCESS_KEY
+          - name: MINIO_ACCESS_KEY
+            value: "CHANGE_ME"
+          - name: MINIO_SECRET_KEY
+            value: "CHANGE_ME"
           volumeMounts:
           - mountPath: /data
             name: minio-volume

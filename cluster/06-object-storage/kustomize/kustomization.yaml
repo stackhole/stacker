@@ -3,11 +3,7 @@ kind: Kustomization
 metadata:
   name: object-storage
 commonLabels:
-  app: objet-storage
-secretGenerator:
-  - name: object-storage
-    envs:
-    - .env.secret
+  app: object-storage
 resources:
   - pvc.yaml
   - deployment.yaml
