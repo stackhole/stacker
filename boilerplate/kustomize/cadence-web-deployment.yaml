@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert -o kustomize
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: cadence-web
+  name: cadence-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: cadence-web
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert -o kustomize
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: cadence-web
+    spec:
+      containers:
+      - env:
+        - name: CADENCE_TCHANNEL_PEERS
+          value: cadence:7933
+        image: ubercadence/web:latest
+        imagePullPolicy: ""
+        name: cadence-web
+        ports:
+        - containerPort: 8088
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

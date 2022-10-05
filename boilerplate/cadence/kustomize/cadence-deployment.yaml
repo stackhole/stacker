@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert -o kustomize
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: cadence
+  name: cadence
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: cadence
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert -o kustomize
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: cadence
+    spec:
+      containers:
+      - env:
+        - name: CASSANDRA_SEEDS
+          value: cassandra
+        - name: DYNAMIC_CONFIG_FILE_PATH
+          value: config/dynamicconfig/development.yaml
+        - name: PROMETHEUS_ENDPOINT_0
+          value: 0.0.0.0:8000
+        - name: PROMETHEUS_ENDPOINT_1
+          value: 0.0.0.0:8001
+        - name: PROMETHEUS_ENDPOINT_2
+          value: 0.0.0.0:8002
+        - name: PROMETHEUS_ENDPOINT_3
+          value: 0.0.0.0:8003
+        image: ubercadence/server:master-auto-setup
+        imagePullPolicy: ""
+        name: cadence
+        ports:
+        - containerPort: 8000
+        - containerPort: 8001
+        - containerPort: 8002
+        - containerPort: 8003
+        - containerPort: 7933
+        - containerPort: 7934
+        - containerPort: 7935
+        - containerPort: 7939
+        - containerPort: 7833
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: /snap/kompose/19/kompose-linux-amd64 convert -o kustomize
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: cadence
+  name: cadence
+spec:
+  ports:
+  - name: "8000"
+    port: 8000
+    targetPort: 8000
+  - name: "8001"
+    port: 8001
+    targetPort: 8001
+  - name: "8002"
+    port: 8002
+    targetPort: 8002
+  - name: "8003"
+    port: 8003
+    targetPort: 8003
+  - name: "7933"
+    port: 7933
+    targetPort: 7933
+  - name: "7934"
+    port: 7934
+    targetPort: 7934
+  - name: "7935"
+    port: 7935
+    targetPort: 7935
+  - name: "7939"
+    port: 7939
+    targetPort: 7939
+  - name: "7833"
+    port: 7833
+    targetPort: 7833
+  selector:
+    io.kompose.service: cadence
+status:
+  loadBalancer: {}

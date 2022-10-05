@@ -1,0 +1,10 @@
+name: 10 - Camel K
+on: workflow_dispatch
+jobs:
+  create-web-bucket:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          cd cluster/10-camel-k
+          bash deploy.sh
